@@ -1,21 +1,28 @@
-ES6_EXT = js
-ES5_EXT = js5
-ES6_FILES = $(shell find js -name '*.$(ES6_EXT)')
-ES5_FILES = $(patsubst %.$(ES6_EXT),%.$(ES5_EXT),$(ES6_FILES))
+DIR_JS = js/app
+DIR_LIB = js/lib
+DIR_ES5 = js/_es5
+DIR_CSS = css
 
-all: app.js app.css
+CSS_FILES = $(shell find $(DIR_CSS) -name '*.css' -or -name '*.less')
+JS_FILES = $(shell find $(DIR_JS) -name '*.js')
+
+all: all.js all.css
 
 watch: all
-	while inotifywait -r js ; do make $^ ; done
+	while inotifywait -e MODIFY -r $(DIR_JS) $(DIR_LIB) $(DIR_CSS) ; do make $^ ; done
 
-app.css: $(wildcard css/*)
-	lessc css/app.less $@
+all.css: $(CSS_FILES)
+	lessc $(DIR_CSS)/app.less $@
 
-app.js: $(ES5_FILES)
+all.js: $(shell find $(DIR_LIB) -name '*.js') $(addprefix $(DIR_ES5)/,$(JS_FILES))
 	cat $^ > $@
-	echo "System.import('js/app');" >> $@
+	echo "System.import('js/app/app').catch(console.error.bind(console));" >> $@
 
-%.$(ES5_EXT): %.$(ES6_EXT)
+$(DIR_ES5)/%: %
+	mkdir -p $(dir $@)
 	babel -M --modules system $< > $@
 
-.PHONY: all watch
+clean:
+	rm -f all.js all.css $(DIR_ES5)
+
+.PHONY: all watch clean
