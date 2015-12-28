@@ -1,4 +1,4 @@
-MAIN = app.css
+MAIN := app.css
 
 $(MAIN): $(shell find src -name '*.css' -or -name '*.less')
 	lessc src/app.less $@

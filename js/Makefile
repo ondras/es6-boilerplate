@@ -1,5 +1,9 @@
-SRC_FILES = $(shell find src -name '*.js' | sed 's/src\///')
-MAIN = app.js
+BABEL_BIN := ../node_modules/babel-cli/bin/babel.js
+BABEL_ARGS := -M --presets es2015 --plugins transform-es2015-modules-systemjs
+BABEL := $(BABEL_BIN) $(BABEL_ARGS)
+
+SRC_FILES := $(shell find src -name '*.js' | sed 's/src\///')
+MAIN := app.js
 
 all: polyfills app
 
@@ -15,7 +19,7 @@ $(MAIN): $(addprefix _build/,$(SRC_FILES))
 
 _build/%: src/%
 	mkdir -p $(dir $@)
-	cd src && babel -M -k --modules system $* > ../$@
+	$(BABEL) --module-id $* $^ > $@
 
 clean:
 	rm -rf polyfills.js $(MAIN) _build

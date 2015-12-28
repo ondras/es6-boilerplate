@@ -1,7 +1,6 @@
-System.register("app.js", [], function (_export) {
-  /* main es6 file */
-  "use strict";
+"use strict";
 
+System.register("app.js", [], function (_export) {
   return {
     setters: [],
     execute: function () {
