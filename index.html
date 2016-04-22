@@ -7,8 +7,10 @@
 	</head>
 
 	<body>
-		<script src="js/polyfills.js"></script>
-		<script src="js/app.js"></script>
-		<script>System.import("app.js").catch(console.error.bind(console))</script>
+		<script>
+			var script = document.createElement("script");
+			script.src = "js/" + (Function.prototype.bind ? "app.js" : "app.ie8.js");
+			document.body.appendChild(script);
+		</script>
 	</body>
 </html>
