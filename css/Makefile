@@ -1,7 +1,8 @@
+LESSC_BIN := ../node_modules/.bin/lessc
 MAIN := app.css
 
 $(MAIN): $(shell find src -name '*.css' -or -name '*.less')
-	lessc src/app.less $@
+	$(LESSC_BIN) src/app.less $@
 
 clean:
 	rm -rf $(MAIN)

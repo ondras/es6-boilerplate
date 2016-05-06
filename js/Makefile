@@ -1,4 +1,4 @@
-BABEL_BIN := ../node_modules/babel-cli/bin/babel.js
+BABEL_BIN := ../node_modules/.bin/babel
 BABEL_ARGS := -M --presets es2015 --plugins
 
 SRC_FILES := $(shell find src -name '*.js' | sed 's/src\///')
