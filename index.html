@@ -3,14 +3,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
-		<link rel="stylesheet" href="css/app.css" />
+		<link rel="stylesheet" href="app.css" />
 	</head>
 
 	<body>
-		<script>
-			var script = document.createElement("script");
-			script.src = "js/" + (Function.prototype.bind ? "app.js" : "app.ie8.js");
-			document.body.appendChild(script);
-		</script>
+		<script src="polyfills.js"></script>
+		<script src="app.js"></script>
 	</body>
 </html>
