@@ -8,5 +8,5 @@ ES6+ skeleton code
     - [babel-plugin-fast-async](https://github.com/MatAtBread/fast-async) for async/await
   - [less](https://github.com/less/less.js) for css
   - [Promise](https://github.com/ondras/promise) polyfill for IE11-
-  - Makefile(s)
+  - Make-based build
   - inotify for watching

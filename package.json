@@ -24,7 +24,7 @@
         "@babel/preset-env",
         {
           "targets": {
-            "ie": 11
+            "ie": 10
           },
           "exclude": ["transform-regenerator", "transform-async-to-generator"],
           "loose": true
