@@ -26,7 +26,10 @@
           "targets": {
             "ie": 10
           },
-          "exclude": ["transform-regenerator", "transform-async-to-generator"],
+          "exclude": [
+            "transform-regenerator",
+            "transform-async-to-generator"
+          ],
           "loose": true
         }
       ]

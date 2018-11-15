@@ -1,16 +1,13 @@
-BIN := node_modules/.bin
-LESSC := $(BIN)/lessc
-ROLLUP := $(BIN)/rollup
-BABEL := $(BIN)/babel
+export PATH := node_modules/.bin:$(PATH)
 ALL := app.js app.css polyfills.js
 
 all: $(ALL)
 
 app.css: $(shell find css -name '*.css' -or -name '*.less')
-	$(LESSC) css/app.less > $@
+	lessc css/app.less > $@
 
 app.js: $(shell find js -name '*.js')
-	$(ROLLUP) -c -i js/app.js | $(BABEL) -f $@ > $@
+	rollup -c -i js/app.js | babel -f $@ > $@
 
 polyfills.js: polyfills/*.js
 	cat $^ > $@
