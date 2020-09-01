@@ -1,38 +1,8 @@
 {
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "babel-plugin-fast-async": "^6.1.2",
+    "google-closure-compiler": "^20200830.0.0",
     "less": "^3.8.1",
     "rollup": "^0.66.6",
     "rollup-plugin-includepaths": "^0.2.3"
-  },
-  "babel": {
-    "plugins": [
-      [
-        "fast-async",
-        {
-          "compiler": {
-            "noRuntime": true
-          }
-        }
-      ]
-    ],
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "ie": 10
-          },
-          "exclude": [
-            "transform-regenerator",
-            "transform-async-to-generator"
-          ],
-          "loose": true
-        }
-      ]
-    ]
   }
 }
