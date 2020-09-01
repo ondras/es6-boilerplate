@@ -4,9 +4,33 @@ ES6+ skeleton code
 
   - [rollup](https://rollupjs.org/) for bundling
     - [rollup-plugin-includepaths](https://github.com/dot-build/rollup-plugin-includepaths) for dot-less imports
-  - [babel](https://babeljs.io/) for transpilation
-    - [babel-plugin-fast-async](https://github.com/MatAtBread/fast-async) for async/await
+  - [google closure compiler](https://developers.google.com/closure/compiler) for minification and transpilation
   - [less](https://github.com/less/less.js) for css
-  - [Promise](https://github.com/ondras/promise) polyfill for IE11-
   - Make-based build
   - inotify for watching
+
+## Usage
+
+Install and build:
+
+```
+make
+```
+
+Production-ready version:
+
+```
+make min
+```
+
+Clean up:
+
+```
+make clean
+```
+
+Watch:
+
+```
+make watch
+```
