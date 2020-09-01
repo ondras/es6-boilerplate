@@ -1,0 +1,29 @@
+digraph G {
+  bgcolor=transparent
+  rankdir=LR
+  concentrate=true
+
+  node [fontsize=30, color=white]
+  edge [fontsize=30, color=white]
+
+  less [label="*.less"]
+  js [label="*.js"]
+  app [label="app.js"]
+  min [label="app.min.js"]
+  css [label="app.css"]
+
+  { rank="same"; lessc; rollup; gcc; }
+
+  npm -> lessc
+  npm -> rollup
+  npm -> gcc
+
+  less -> css
+  lessc -> css
+
+  js -> app
+  rollup -> app
+
+  app -> min
+  gcc -> min [label=" "]
+}
