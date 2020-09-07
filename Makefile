@@ -1,4 +1,5 @@
 BIN := $(shell npm bin)
+TSC := $(BIN)/tsc
 LESSC := $(BIN)/lessc
 ROLLUP := $(BIN)/rollup
 GCC := $(BIN)/google-closure-compiler
@@ -15,17 +16,21 @@ $(BIN)/%:
 app.css: $(shell find css -name '*.css' -or -name '*.less') | $(LESSC)
 	$(LESSC) css/app.less > $@
 
-app.js: $(shell find js -name '*.js') | $(ROLLUP)
+app.js: js/.tsflag | $(ROLLUP)
 	$(ROLLUP) -c -i js/app.js > $@
 
 app.min.js: app.js | $(GCC)
 	$(GCC) --language_out=ECMASCRIPT5 --js $^ > $@
 
+js/.tsflag: $(shell find ts -name '*.ts')
+	$(TSC) -p ts
+	@touch $@
+
 clean:
-	rm -rf $(ALL) $(MIN) node_modules
+	rm -rf $(ALL) $(MIN) js node_modules
 
 watch: all
-	while inotifywait -e MODIFY -r css js ; do $(MAKE) $^ ; done
+	while inotifywait -e MODIFY -r css ts ; do $(MAKE) $^ ; done
 
 .PHONY: all watch clean
 

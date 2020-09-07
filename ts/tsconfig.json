@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+
+		"baseUrl": ".",
+		"incremental": true,
+		"target": "es2019",
+		"outDir": "../js"
+	}
+}
