@@ -35,3 +35,7 @@ Watch:
 ```
 make watch
 ```
+
+## Graph
+
+![](.dot/build.svg)
