@@ -22,7 +22,7 @@ app.js: js/.tsflag | $(ROLLUP)
 app.min.js: app.js | $(GCC)
 	$(GCC) --language_out=ECMASCRIPT5 --js $^ > $@
 
-js/.tsflag: $(shell find ts -name '*.ts')
+js/.tsflag: $(shell find ts -name '*.ts') | $(TSC)
 	$(TSC) -p ts
 	@touch $@
 
